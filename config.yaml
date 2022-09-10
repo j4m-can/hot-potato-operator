@@ -1,0 +1,20 @@
+# Copyright 2022 Canonical Ltd.
+# See LICENSE file for licensing details.
+#
+# Learn more about config at: https://juju.is/docs/sdk/config
+
+#options: {}
+options:
+  max_passes:
+    description: Maximum number of total passes allowed.
+    type: int
+    default: 10
+  run:
+    description: Flag to allow running or not.
+    type: boolean
+    default: false
+
+  debugger-intercept-handler:
+    type: boolean
+    description: Register intercept handler for observe calls.
+    default: true

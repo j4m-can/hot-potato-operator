@@ -1,0 +1,20 @@
+# Copyright 2022 Canonical Ltd.
+# See LICENSE file for licensing details.
+
+# For a complete list of supported options, see:
+# https://juju.is/docs/sdk/metadata-reference
+
+name: hot-potato
+
+display-name: |
+  Hot potato operation
+
+description: |
+  Demonstrates hot potato behavior within operator instance.
+
+summary: |
+  Hot potato operator exercise.
+
+peers:
+  hot-potato:
+    interface: hot-potato

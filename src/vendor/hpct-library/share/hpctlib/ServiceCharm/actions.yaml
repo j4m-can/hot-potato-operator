@@ -1,0 +1,47 @@
+# Copyright 2022 Canonical Ltd.
+# See LICENSE file for licensing details.
+#
+# Learn more about actions at: https://juju.is/docs/sdk/actions
+
+# for ServiceCharm
+restart:
+  description: Restart services.
+  params:
+    force:
+      description: Force action.
+      type: boolean
+      default: false
+    sync:
+      description: Sync configuration.
+      type: boolean
+      default: false
+
+set-sync-status:
+  description: Set sync status (debugging).
+  params:
+    key:
+      description: Sync key.
+      type: string
+    value:
+      description: Sync status.
+      type: boolean
+
+start:
+  description: Start services.
+
+stop:
+  description: Stop services.
+  params:
+    force:
+      description: Force action.
+      type: boolean
+      default: false
+
+sync:
+  description: Sync configuration.
+  params:
+    force:
+      description: Force action.
+      type: boolean
+      default: false
+
