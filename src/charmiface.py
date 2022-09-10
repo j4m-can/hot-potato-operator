@@ -162,32 +162,32 @@ class HotPotatoCharm(BaseHotPotatoCharm):
             self.unit.status = WaitingStatus()
             return
 
+        isowner = appiface.owner == self.unit.name
         selfiface = self.hpsiface.select(self.unit)
         updated = tuple(self.service_get_updated())
-        isowner = appiface.owner == self.unit.name
 
         if self.unit.is_leader():
             # update app info
-            self.unit.status = ActiveStatus(
+            appstatus = (
                 f"updated ({updated})"
-                f" id ({self.unit.name})"
                 f" delay ({appiface.delay})"
                 f" max_passes ({appiface.max_passes})"
-                f" run ({appiface.run})"
-                f" isowner? ({isowner})"
-                f" npasses ({selfiface.npasses})"
-                f" owner ({appiface.owner})"
-                f" total_passes ({appiface.total_passes})"
                 f" nunits ({len(relation.units)+1})"
-                f" next_owner ({selfiface.next_owner})"
-                f" next_total_passes ({selfiface.next_total_passes})"
+                f" owner ({appiface.owner})"
+                f" run ({appiface.run})"
+                f" total_passes ({appiface.total_passes})"
+                f" :: "
             )
         else:
-            self.unit.status = ActiveStatus(
-                f"updated ({updated})"
-                f" id ({self.unit.name})"
-                f" isowner? ({isowner})"
-                f" npasses ({selfiface.npasses})"
-                f" next_owner ({selfiface.next_owner})"
-                f" next_total_passes ({selfiface.next_total_passes})"
-            )
+            appstatus = ""
+
+        unitstatus = (
+            f"UNIT"
+            f" id ({self.unit.name})"
+            f" isowner? ({isowner})"
+            f" npasses ({selfiface.npasses})"
+            f" next_owner ({selfiface.next_owner})"
+            f" next_total_passes ({selfiface.next_total_passes})"
+        )
+
+        self.unit.status = ActiveStatus(f"{updated} :: {appstatus}{unitstatus}")

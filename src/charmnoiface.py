@@ -166,32 +166,32 @@ class HotPotatoCharm(BaseHotPotatoCharm):
             self.unit.status = WaitingStatus()
             return
 
+        isowner = appdata.get("owner") == self.unit.name
         selfdata = relation.data[self.unit]
         updated = tuple(self.service_get_updated())
-        isowner = appdata.get("owner") == self.unit.name
 
         if self.unit.is_leader():
             # update app info
-            self.unit.status = ActiveStatus(
-                f"""updated ({updated})"""
-                f""" id ({self.unit.name})"""
+            appstatus = (
+                f"""APP"""
                 f""" delay ({appdata.get("delay")})"""
                 f""" max_passes ({appdata.get("max_passes")})"""
-                f""" run ({bool(appdata.get("run"))})"""
-                f""" isowner? ({isowner})"""
-                f""" npasses ({selfdata.get("npasses")})"""
-                f""" owner ({appdata.get("owner")})"""
-                f""" total_passes ({appdata.get("total_passes")})"""
                 f""" nunits ({len(relation.units)+1})"""
-                f""" next_owner ({selfdata.get("next_owner")})"""
-                f""" next_total_passes ({selfdata.get("next_total_passes")})"""
+                f""" owner ({appdata.get("owner")})"""
+                f""" run ({bool(appdata.get("run"))})"""
+                f""" total_passes ({appdata.get("total_passes")})"""
+                f""" :: """
             )
         else:
-            self.unit.status = ActiveStatus(
-                f"""updated ({updated})"""
-                f""" id ({self.unit.name})"""
-                f""" isowner? ({isowner})"""
-                f""" npasses ({selfdata.get("npasses")})"""
-                f""" next_owner ({selfdata.get("next_owner")})"""
-                f""" next_total_passes ({selfdata.get("next_total_passes")})"""
-            )
+            appstatus = ""
+
+        unitstatus = (
+            f"""UNIT"""
+            f""" id ({self.unit.name})"""
+            f""" isowner? ({isowner})"""
+            f""" npasses ({selfdata.get("npasses")})"""
+            f""" next_owner ({selfdata.get("next_owner")})"""
+            f""" next_total_passes ({selfdata.get("next_total_passes")})"""
+        )
+
+        self.unit.status = ActiveStatus(f"{updated} :: {appstatus}{unitstatus}")
