@@ -7,14 +7,14 @@
 """
 
 
-from hpctlib.interface import codec, checker
 from hpctlib.interface import interface_registry
-from hpctlib.interface.base import Value
+from hpctlib.interface.checker import FloatRange, IntegerRange
 from hpctlib.interface.relation import (
     AppBucketInterface,
     RelationSuperInterface,
     UnitBucketInterface,
 )
+from hpctlib.interface.value import Boolean, Float, Integer, String
 
 
 class HotPotatoRelationSuperInterface(RelationSuperInterface):
@@ -22,18 +22,18 @@ class HotPotatoRelationSuperInterface(RelationSuperInterface):
 
     class AppInterface(AppBucketInterface):
 
-        initialized = Value(codec.Boolean(), False)
-        delay = Value(codec.Float(), 1.0, checker.FloatRange(0, None))
-        max_passes = Value(codec.Integer(), 10, checker.IntegerRange(0, None))
-        owner = Value(codec.String(), "")
-        run = Value(codec.Boolean(), False)
-        total_passes = Value(codec.Integer(), 0, checker.IntegerRange(0, None))
+        initialized = Boolean(False)
+        delay = Float(1.0, FloatRange(0, None))
+        max_passes = Integer(10, IntegerRange(0, None))
+        owner = String("")
+        run = Boolean(False)
+        total_passes = Integer(0, IntegerRange(0, None))
 
     class UnitInterface(UnitBucketInterface):
 
-        next_owner = Value(codec.String(), "")
-        next_total_passes = Value(codec.Integer(), 0, checker.IntegerRange(0, None))
-        npasses = Value(codec.Integer(), 0, checker.IntegerRange(0, None))
+        next_owner = String("")
+        next_total_passes = Integer(0, IntegerRange(0, None))
+        npasses = Integer(0, IntegerRange(0, None))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
