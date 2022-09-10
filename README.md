@@ -13,9 +13,7 @@ This operator works along the lines of the hot potato game:
 
 ### How It Works
 
-This operator uses the leader as a mediator of the "latest" information
-and uses the application bucket to store it and units determine their
-next step based on it.
+This operator uses the leader as a mediator of the "latest" information and uses the application bucket to store it and units determine their next step based on it.
 
 All units are part of the pool that can receive and pass the potato.
 Each unit has its own unit information:
@@ -31,7 +29,7 @@ The leader manages application information:
 * `total_passes` - total number of passes handled by all units
 
 When an application event occurs, each unit peeks at the application
-"owner" setting. If it matches the unit, the unit then elects the next
+`owner` setting. If it matches the unit, the unit then elects the next
 owner and updates the `next_owner` value, increments its own `npasses`
 by 1, and updates the the `next_total_passes` by 1.
 
