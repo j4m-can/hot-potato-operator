@@ -45,10 +45,10 @@ unit information (non-leaders).
 
 ### Kinds of Operators
 
-There are 2 versions:
+There are 2 versions (selectable in `charm.py`):
 
-* uses `hpctlib` Interface/SuperInterface (`charmiface.py`)
-* standard, non-interface/superinterface (`charmnoiface.py`)
+1. uses `hpctlib` Interface/SuperInterface (`charmiface.py`)
+2. standard, non-interface/superinterface (`charmnoiface.py`)
 
 These provide a way to compare the interface and non-interface
 approaches.
