@@ -15,7 +15,7 @@ import logging
 from ops.main import main
 
 
-USE_IFACE = False
+USE_IFACE = True
 logger = logging.getLogger(__name__)
 
 
