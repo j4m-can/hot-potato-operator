@@ -11,3 +11,13 @@ bases:
       channel: "20.04"
     - name: "ubuntu"
       channel: "22.04"
+
+parts:
+  charm:
+    override-build: |
+      # vendor packages
+      git --version || apt install -y git
+      mkdir -p src/vendor
+      (cd src/vendor; git clone https://github.com/j4m-can/hpct-library.git; cd ..; ln -sf vendor/hp
+ct-library/lib/hpctlib .)
+      craftctl default

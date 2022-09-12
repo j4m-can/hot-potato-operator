@@ -1,3 +1,0 @@
-cryptography==3.4.8
-ops==1.5.2
-setuptools==59.6.0
