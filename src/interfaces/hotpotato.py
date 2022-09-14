@@ -14,7 +14,7 @@ from hpctlib.interface.relation import (
     RelationSuperInterface,
     UnitBucketInterface,
 )
-from hpctlib.interface.value import Boolean, Float, Integer, String
+from hpctlib.interface.value import Boolean, NonNegativeFloat, NonNegativeInteger, String
 
 
 class HotPotatoRelationSuperInterface(RelationSuperInterface):
@@ -23,17 +23,17 @@ class HotPotatoRelationSuperInterface(RelationSuperInterface):
     class AppInterface(AppBucketInterface):
 
         initialized = Boolean(False)
-        delay = Float(1.0, FloatRange(0, None))
-        max_passes = Integer(10, IntegerRange(0, None))
+        delay = NonNegativeFloat(1.0)
+        max_passes = NonNegativeInteger(10)
         owner = String("")
         run = Boolean(False)
-        total_passes = Integer(0, IntegerRange(0, None))
+        total_passes = NonNegativeInteger(0)
 
     class UnitInterface(UnitBucketInterface):
 
         next_owner = String("")
-        next_total_passes = Integer(0, IntegerRange(0, None))
-        npasses = Integer(0, IntegerRange(0, None))
+        next_total_passes = NonNegativeInteger(0)
+        npasses = NonNegativeInteger(0)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
