@@ -17,7 +17,7 @@ parts:
     override-build: |
       # vendor packages
       git --version || apt install -y git
+      rm -rf src/vendor hpctlib
       mkdir -p src/vendor
-      (cd src/vendor; git clone https://github.com/j4m-can/hpct-library.git; cd ..; ln -sf vendor/hp
-ct-library/lib/hpctlib .)
+      (cd src/vendor; git clone https://github.com/j4m-can/hpct-library.git; cd ..; ln -sf vendor/hpct-library/lib/hpctlib .)
       craftctl default
