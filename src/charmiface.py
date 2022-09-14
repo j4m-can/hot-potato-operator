@@ -169,7 +169,7 @@ class HotPotatoCharm(BaseHotPotatoCharm):
         if self.unit.is_leader():
             # update app info
             appstatus = (
-                f"updated ({updated})"
+                f"APP"
                 f" delay ({appiface.delay})"
                 f" max_passes ({appiface.max_passes})"
                 f" nunits ({len(relation.units)+1})"
