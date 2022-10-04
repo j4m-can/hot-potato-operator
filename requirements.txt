@@ -1,1 +1,3 @@
 ops >= 1.4.0
+git+https://github.com/j4m-can/hpct-ops.git
+git+https://github.com/j4m-can/hpct-interfaces.git
