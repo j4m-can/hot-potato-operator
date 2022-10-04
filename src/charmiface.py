@@ -10,8 +10,8 @@
 import logging
 import time
 
-from hpctlib.interface import interface_registry
-from hpctlib.misc import log_enter_exit
+from hpctinterfaces import interface_registry
+from hpctops.misc import log_enter_exit, service_forced_update
 
 from ops.model import ActiveStatus, WaitingStatus
 

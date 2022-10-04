@@ -7,14 +7,14 @@
 """
 
 
-from hpctlib.interface import interface_registry
-from hpctlib.interface.checker import FloatRange, IntegerRange
-from hpctlib.interface.relation import (
+from hpctinterfaces import interface_registry
+from hpctinterfaces.checker import FloatRange, IntegerRange
+from hpctinterfaces.relation import (
     AppBucketInterface,
     RelationSuperInterface,
     UnitBucketInterface,
 )
-from hpctlib.interface.value import Boolean, NonNegativeFloat, NonNegativeInteger, String
+from hpctinterfaces.value import Boolean, NonNegativeFloat, NonNegativeInteger, String
 
 
 class HotPotatoRelationSuperInterface(RelationSuperInterface):

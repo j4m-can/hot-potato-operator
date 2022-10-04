@@ -10,7 +10,7 @@
 import logging
 import time
 
-from hpctlib.misc import log_enter_exit
+from hpctops.misc import log_enter_exit
 
 from ops.model import ActiveStatus, WaitingStatus
 

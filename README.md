@@ -47,7 +47,7 @@ unit information (non-leaders).
 
 There are 2 versions (selectable in `charm.py`):
 
-1. uses `hpctlib` Interface/SuperInterface (`charmiface.py`)
+1. uses `hpctinterfaces` Interface/SuperInterface (`charmiface.py`)
 2. standard, non-interface/superinterface (`charmnoiface.py`)
 
 These provide a way to compare the interface and non-interface

@@ -14,8 +14,8 @@ import sys
 
 sys.path.insert(1, sys.path[0] + "/vendor")
 
-from hpctlib.misc import get_methodname, log_enter_exit
-from hpctlib.ops.charm.service import ServiceCharm
+from hpctops.charm.service import ServiceCharm
+from hpctops.misc import get_methodname, log_enter_exit
 
 
 logger = logging.getLogger(__name__)
@@ -23,10 +23,10 @@ logger = logging.getLogger(__name__)
 
 if 1:
     # interpose DebuggerCharm
-    from hpctlib.ops.charm import set_base_charm
+    from hpctops.charm import set_base_charm
 
     set_base_charm(ServiceCharm)
-    from hpctlib.ops.charm.debugger import DebuggerCharm as ServiceCharm
+    from hpctops.charm.debugger import DebuggerCharm as ServiceCharm
 
 
 class BaseHotPotatoCharm(ServiceCharm):
